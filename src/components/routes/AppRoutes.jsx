@@ -7,6 +7,9 @@ import Dashboard from '../pages/dashboard/Dashboard'
 import AdminRoute from './AdminRoute'
 import NotFound from '../pages/errors/NotFound'
 import AdminLayout from '../layouts/AdminLayout'
+import UserList from '../pages/users/UserList'
+import UserCreate from '../pages/users/UserCreate'
+import UserEdit from '../pages/users/UserEdit'
 
 const AppRoutes = () => {
   return (
@@ -19,12 +22,21 @@ const AppRoutes = () => {
 
             <Route path='/login' element={<Login/>}/>
 
-            {/* dashboard */}
-            <Route path='/dashboard' element={
+            {/* admin */}
+            <Route path='/admin' element={
               <AdminRoute>
                   <AdminLayout/>
               </AdminRoute>
-            }/>
+              }>
+                  {/* child routes */}
+                  <Route index element={<Dashboard/>}/>
+
+                  {/* page user */}
+                  <Route path='users' element={<UserList/>}/> 
+                  <Route path='users/create' element={<UserCreate/>}/>
+                  <Route path='users/edit/:id' element={<UserEdit/>}/>
+
+            </Route>
 
             {/* Not Found page */}
             <Route path='*' element={<NotFound/>} />

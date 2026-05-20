@@ -35,7 +35,7 @@ const handleSubmit = async (event) => {
 
             HandleLogin(res.data.user,res.data.token)
 
-            navigate("/dashboard");
+            navigate("/admin");
 
         } else {
 
